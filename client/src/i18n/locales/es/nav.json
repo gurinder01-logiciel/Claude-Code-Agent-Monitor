@@ -125,5 +125,10 @@
     "actionMuteTabby": "Silenciar a Tabby",
     "actionReportIssue": "Informar de un problema en GitHub",
     "actionReleases": "Ver las notas de la versión"
-  }
+  },
+  "themeShort": "Tema",
+  "themeLight": "Cambiar al tema claro",
+  "themeDark": "Cambiar al tema oscuro",
+  "themeLightShort": "Claro",
+  "themeDarkShort": "Oscuro"
 }

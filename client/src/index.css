@@ -4,6 +4,210 @@
  * @author Son Nguyen <hoangson091104@gmail.com>
  */
 
+/* =============================================================================
+ * Theme tokens — Logiciel palette (logiciel.io)
+ *
+ * Values are space-separated RGB channels, not hex, so Tailwind can compose them
+ * as rgb(var(--x) / <alpha-value>) and every existing opacity modifier
+ * (bg-accent/15, bg-surface-2/60, ...) keeps working untouched.
+ *
+ * `gray` is deliberately remapped too. The codebase uses text-gray-100 for the
+ * most prominent text down to text-gray-600 for the faintest — an intent, not a
+ * literal colour. Light mode inverts that ramp so the intent survives without
+ * editing ~2,200 class usages.
+ * ============================================================================= */
+:root {
+  /* light — Logiciel paper + ink */
+  --surface-0: 239 234 225;
+  --surface-1: 245 241 234;
+  --surface-2: 251 249 245;
+  --surface-3: 255 255 255;
+  --surface-4: 245 241 234;
+  --surface-5: 235 229 217;
+  --border: 222 214 201;
+  --border-light: 207 197 181;
+  --accent: 164 30 33;
+  --accent-hover: 192 40 44;
+  --gold: 184 152 60;
+
+  --gray-50: 15 15 16;
+  --gray-100: 15 15 16;
+  --gray-200: 43 43 46;
+  --gray-300: 58 58 63;
+  --gray-400: 84 84 92;
+  --gray-500: 107 107 115;
+  --gray-600: 148 148 156;
+  --gray-700: 176 168 158;
+
+  /* Pale hue shades (100-400) are used as foreground throughout. On a light
+     surface they are unreadable, so light mode resolves each to a DARK shade of
+     the same hue (300->700, 400->600, ...). Dark mode keeps Tailwind's originals. */
+  --amber-100: 120 53 15;
+  --amber-200: 146 64 14;
+  --amber-300: 180 83 9;
+  --amber-400: 217 119 6;
+  --yellow-100: 113 63 18;
+  --yellow-200: 133 77 14;
+  --yellow-300: 161 98 7;
+  --yellow-400: 202 138 4;
+  --emerald-100: 6 78 59;
+  --emerald-200: 6 95 70;
+  --emerald-300: 4 120 87;
+  --emerald-400: 5 150 105;
+  --green-100: 20 83 45;
+  --green-200: 22 101 52;
+  --green-300: 21 128 61;
+  --green-400: 22 163 74;
+  --blue-100: 30 58 138;
+  --blue-200: 30 64 175;
+  --blue-300: 29 78 216;
+  --blue-400: 37 99 235;
+  --sky-100: 12 74 110;
+  --sky-200: 7 89 133;
+  --sky-300: 3 105 161;
+  --sky-400: 2 132 199;
+  --indigo-100: 49 46 129;
+  --indigo-200: 55 48 163;
+  --indigo-300: 67 56 202;
+  --indigo-400: 79 70 229;
+  --violet-100: 76 29 149;
+  --violet-200: 91 33 182;
+  --violet-300: 109 40 217;
+  --violet-400: 124 58 237;
+  --purple-100: 88 28 135;
+  --purple-200: 107 33 168;
+  --purple-300: 126 34 206;
+  --purple-400: 147 51 234;
+  --fuchsia-100: 112 26 117;
+  --fuchsia-200: 134 25 143;
+  --fuchsia-300: 162 28 175;
+  --fuchsia-400: 192 38 211;
+  --pink-100: 131 24 67;
+  --pink-200: 157 23 77;
+  --pink-300: 190 24 93;
+  --pink-400: 219 39 119;
+  --rose-100: 136 19 55;
+  --rose-200: 159 18 57;
+  --rose-300: 190 18 60;
+  --rose-400: 225 29 72;
+  --red-100: 127 29 29;
+  --red-200: 153 27 27;
+  --red-300: 185 28 28;
+  --red-400: 220 38 38;
+  --orange-100: 124 45 18;
+  --orange-200: 154 52 18;
+  --orange-300: 194 65 12;
+  --orange-400: 234 88 12;
+  --teal-100: 19 78 74;
+  --teal-200: 17 94 89;
+  --teal-300: 15 118 110;
+  --teal-400: 13 148 136;
+  --cyan-100: 22 78 99;
+  --cyan-200: 21 94 117;
+  --cyan-300: 14 116 144;
+  --cyan-400: 8 145 178;
+  --lime-100: 54 83 20;
+  --lime-200: 63 98 18;
+  --lime-300: 77 124 15;
+  --lime-400: 101 163 13;
+}
+
+[data-theme="dark"] {
+  /* dark — Logiciel night */
+  --surface-0: 11 6 8;
+  --surface-1: 18 11 13;
+  --surface-2: 26 14 16;
+  --surface-3: 34 21 24;
+  --surface-4: 44 28 32;
+  --surface-5: 55 36 40;
+  --border: 58 38 42;
+  --border-light: 74 50 55;
+  --accent: 164 30 33;
+  --accent-hover: 192 40 44;
+  --gold: 216 192 120;
+
+  --gray-50: 249 250 251;
+  --gray-100: 244 237 232;
+  --gray-200: 229 231 235;
+  --gray-300: 209 213 219;
+  --gray-400: 181 168 163;
+  --gray-500: 138 123 119;
+  --gray-600: 107 96 93;
+  --gray-700: 75 68 66;
+
+  /* Pale hue shades (100-400) are used as foreground throughout. On a light
+     surface they are unreadable, so light mode resolves each to a DARK shade of
+     the same hue (300->700, 400->600, ...). Dark mode keeps Tailwind's originals. */
+  --amber-100: 254 243 199;
+  --amber-200: 253 230 138;
+  --amber-300: 252 211 77;
+  --amber-400: 251 191 36;
+  --yellow-100: 254 249 195;
+  --yellow-200: 254 240 138;
+  --yellow-300: 253 224 71;
+  --yellow-400: 250 204 21;
+  --emerald-100: 209 250 229;
+  --emerald-200: 167 243 208;
+  --emerald-300: 110 231 183;
+  --emerald-400: 52 211 153;
+  --green-100: 220 252 231;
+  --green-200: 187 247 208;
+  --green-300: 134 239 172;
+  --green-400: 74 222 128;
+  --blue-100: 219 234 254;
+  --blue-200: 191 219 254;
+  --blue-300: 147 197 253;
+  --blue-400: 96 165 250;
+  --sky-100: 224 242 254;
+  --sky-200: 186 230 253;
+  --sky-300: 125 211 252;
+  --sky-400: 56 189 248;
+  --indigo-100: 224 231 255;
+  --indigo-200: 199 210 254;
+  --indigo-300: 165 180 252;
+  --indigo-400: 129 140 248;
+  --violet-100: 237 233 254;
+  --violet-200: 221 214 254;
+  --violet-300: 196 181 253;
+  --violet-400: 167 139 250;
+  --purple-100: 243 232 255;
+  --purple-200: 233 213 255;
+  --purple-300: 216 180 254;
+  --purple-400: 192 132 252;
+  --fuchsia-100: 250 232 255;
+  --fuchsia-200: 245 208 254;
+  --fuchsia-300: 240 171 252;
+  --fuchsia-400: 232 121 249;
+  --pink-100: 252 231 243;
+  --pink-200: 251 207 232;
+  --pink-300: 249 168 212;
+  --pink-400: 244 114 182;
+  --rose-100: 255 228 230;
+  --rose-200: 254 205 211;
+  --rose-300: 253 164 175;
+  --rose-400: 251 113 133;
+  --red-100: 254 226 226;
+  --red-200: 254 202 202;
+  --red-300: 252 165 165;
+  --red-400: 248 113 113;
+  --orange-100: 255 237 213;
+  --orange-200: 254 215 170;
+  --orange-300: 253 186 116;
+  --orange-400: 251 146 60;
+  --teal-100: 204 251 241;
+  --teal-200: 153 246 228;
+  --teal-300: 94 234 212;
+  --teal-400: 45 212 191;
+  --cyan-100: 207 250 254;
+  --cyan-200: 165 243 252;
+  --cyan-300: 103 232 249;
+  --cyan-400: 34 211 238;
+  --lime-100: 236 252 203;
+  --lime-200: 217 249 157;
+  --lime-300: 190 242 100;
+  --lime-400: 163 230 53;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +215,7 @@
 @layer base {
   * {
     scrollbar-width: thin;
-    scrollbar-color: #2a2a3d #0c0c14;
+    scrollbar-color: #3a262a #120b0d;
   }
 
   *::-webkit-scrollbar {
@@ -20,24 +224,24 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: #0c0c14;
+    background: #120b0d;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: #2a2a3d;
+    background: #3a262a;
     border-radius: 3px;
   }
 
   *::-webkit-scrollbar-thumb:hover {
-    background: #363650;
+    background: #4a3237;
   }
 
   ::selection {
-    background: rgba(99, 102, 241, 0.3);
-    color: #e4e4ed;
+    background: rgb(var(--accent) / 0.32);
+    color: #f4ede8;
   }
 
-  ::-webkit-calendar-picker-indicator {
+  [data-theme="dark"] ::-webkit-calendar-picker-indicator {
     filter: invert(1) brightness(0.8);
     cursor: pointer;
     opacity: 0.7;
@@ -100,7 +304,7 @@
     border-radius: 0.5rem;
     border: 1px solid #363650;
     background: #15151f;
-    color: #e4e4ed;
+    color: #f4ede8;
     font-size: 0.8125rem;
     font-weight: 500;
     text-decoration: none;

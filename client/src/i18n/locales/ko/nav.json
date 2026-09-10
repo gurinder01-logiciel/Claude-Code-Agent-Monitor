@@ -125,5 +125,10 @@
     "actionMuteTabby": "Tabby 음소거",
     "actionReportIssue": "GitHub에 문제 보고",
     "actionReleases": "릴리스 노트 보기"
-  }
+  },
+  "themeShort": "테마",
+  "themeLight": "라이트 테마로 전환",
+  "themeDark": "다크 테마로 전환",
+  "themeLightShort": "라이트",
+  "themeDarkShort": "다크"
 }
